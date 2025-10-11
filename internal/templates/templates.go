@@ -9,13 +9,13 @@ func DailyNote() string {
 	now := time.Now()
 	return fmt.Sprintf(`# %s
 
-## Log
+## Notes
 -
 
 ## Todos
 - [ ]
 
-## Ideas
+## Log
 -
 `, now.Format("Monday, January 02, 2006"))
 }
