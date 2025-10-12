@@ -1,16 +1,5 @@
 # n
 
-A simple and extensible CLI for personal note-taking.
-
-## Features
-
-- **Daily notes**: Automatically templated daily notes
-- **Quick inbox**: Fast capture with timestamps
-- **Project notes**: Timestamped project notes with slugs
-- **Search**: Ripgrep + fzf integration for fast note discovery
-
-## Installation
-
 ```bash
 make install
 ```
@@ -19,7 +8,7 @@ This will build and install the binary to `~/.local/bin/n`.
 
 ## Usage
 
-### Daily note (default)
+### Daily
 ```bash
 n          # Opens today's daily note
 n daily    # Same as above
@@ -43,7 +32,7 @@ n search
 ```
 Uses ripgrep and fzf to search all notes. Requires `rg`, `fzf`, and `bat` to be installed.
 
-## Configuration
+## Config
 
 The CLI uses the following defaults:
 - **Notes directory**: `~/notes/`
@@ -58,22 +47,14 @@ Directory structure:
 └── scratch/    # Scratch space
 ```
 
-## Replacing zsh functions
-
-After installing, you can remove the old zsh functions from `~/.zshrc`:
-- `n()` - lines 178-195
-- `ni()` - lines 198-204
-- `nn()` - lines 207-225
-- `nr()` - lines 228-234
-
-## Dependencies
+## Deps
 
 - Go 1.24+
 - ripgrep (`rg`) - for search
 - fzf - for search
 - bat - for search preview
 
-## Development
+## Dev
 
 ```bash
 make build    # Build binary

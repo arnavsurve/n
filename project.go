@@ -1,4 +1,4 @@
-package notes
+package n
 
 import (
 	"fmt"
@@ -7,12 +7,9 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
-
-	"github.com/asurve/n/internal/config"
-	"github.com/asurve/n/internal/templates"
 )
 
-func CreateProject(cfg *config.Config, slug []string) error {
+func CreateProject(cfg *Config, slug []string) error {
 	if err := cfg.EnsureDirs(); err != nil {
 		return fmt.Errorf("failed to create directories: %w", err)
 	}
@@ -26,7 +23,7 @@ func CreateProject(cfg *config.Config, slug []string) error {
 	filename := fmt.Sprintf("%s-%s.md", timestamp, strings.ReplaceAll(slugStr, " ", "-"))
 	filepath := filepath.Join(cfg.ProjectsDir, filename)
 
-	if err := os.WriteFile(filepath, []byte(templates.ProjectNote(slugStr)), 0644); err != nil {
+	if err := os.WriteFile(filepath, []byte(ProjectNote(slugStr)), 0644); err != nil {
 		return fmt.Errorf("failed to create project note: %w", err)
 	}
 

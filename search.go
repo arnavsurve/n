@@ -1,4 +1,4 @@
-package notes
+package n
 
 import (
 	"bufio"
@@ -6,11 +6,9 @@ import (
 	"os"
 	"os/exec"
 	"strings"
-
-	"github.com/asurve/n/internal/config"
 )
 
-func Search(cfg *config.Config) error {
+func Search(cfg *Config) error {
 	rgCmd := exec.Command(
 		"rg",
 		"--hidden",

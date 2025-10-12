@@ -4,22 +4,21 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/asurve/n/internal/config"
-	"github.com/asurve/n/internal/notes"
+	n "github.com/asurve/n"
 	"github.com/spf13/cobra"
 )
 
-var cfg *config.Config
+var cfg *n.Config
 
 func main() {
-	cfg = config.Load()
+	cfg = n.Load()
 
 	rootCmd := &cobra.Command{
 		Use:   "n",
 		Short: "A simple note-taking CLI",
 		Long:  "A simple and extensible note-taking CLI for daily notes, inbox captures, projects, and search.",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			return notes.OpenDaily(cfg)
+			return n.OpenDaily(cfg)
 		},
 	}
 
@@ -27,7 +26,7 @@ func main() {
 		Use:   "daily",
 		Short: "Open today's daily note",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			return notes.OpenDaily(cfg)
+			return n.OpenDaily(cfg)
 		},
 	}
 
@@ -36,7 +35,7 @@ func main() {
 		Short: "Quick append to inbox with timestamp",
 		Args:  cobra.MinimumNArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			return notes.AppendInbox(cfg, args)
+			return n.AppendInbox(cfg, args)
 		},
 	}
 
@@ -44,7 +43,7 @@ func main() {
 		Use:   "new [slug...]",
 		Short: "Create a new project note",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			return notes.CreateProject(cfg, args)
+			return n.CreateProject(cfg, args)
 		},
 	}
 
@@ -52,7 +51,7 @@ func main() {
 		Use:   "search",
 		Short: "Search notes with ripgrep and fzf",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			return notes.Search(cfg)
+			return n.Search(cfg)
 		},
 	}
 

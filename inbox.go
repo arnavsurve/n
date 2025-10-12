@@ -1,4 +1,4 @@
-package notes
+package n
 
 import (
 	"fmt"
@@ -7,11 +7,9 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
-
-	"github.com/asurve/n/internal/config"
 )
 
-func AppendInbox(cfg *config.Config, text []string) error {
+func AppendInbox(cfg *Config, text []string) error {
 	if err := cfg.EnsureDirs(); err != nil {
 		return fmt.Errorf("failed to create directories: %w", err)
 	}
